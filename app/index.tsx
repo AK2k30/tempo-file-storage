@@ -12,9 +12,9 @@ const App = () => {
     return (
         <NavigationContainer independent={true}>
             <Stack.Navigator initialRouteName='Intro'>
-                <Stack.Screen name='Intro' component={Intro}></Stack.Screen>
-                <Stack.Screen name='Login' component={Login}></Stack.Screen>
-                <Stack.Screen name='Main' component={Main}></Stack.Screen>
+                <Stack.Screen name='Intro' component={Intro} options={{ headerShown: false }}></Stack.Screen>
+                <Stack.Screen name='Login' component={Login} options={{ headerLeft: () => null }}></Stack.Screen>
+                <Stack.Screen name='Main' component={Main} options={{ headerLeft: () => null }}></Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
 
