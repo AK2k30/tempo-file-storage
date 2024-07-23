@@ -6,14 +6,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Intro } from '../screens/intro';
 import { Login } from '../screens/login';
 import { Main } from '../screens/Main';
-import OnboardingScreen from '../screens/OnboardingScreen'; // Adjust the path if needed
+import OnboardingScreen from '../screens/OnboardingScreen'; // Ensure correct path
 import { Home } from '@/screens/app';
 import { TailwindProvider } from 'tailwindcss-react-native';
 
 const App = () => {
     const Stack = createNativeStackNavigator();
     const [isOnboardingCompleted, setIsOnboardingCompleted] = useState(false);
-    const [isIntroShown, setIsIntroShown] = useState(true); // Add a state to control the splash screen
+    const [isIntroShown, setIsIntroShown] = useState(true);
 
     useEffect(() => {
         const checkOnboardingStatus = async () => {
@@ -27,7 +27,7 @@ const App = () => {
         // Simulate splash screen delay
         setTimeout(() => {
             setIsIntroShown(false);
-        }, 2000); // 2 seconds delay for the splash screen
+        }, 2000);
     }, []);
 
     const handleOnboardingComplete = async () => {
@@ -36,9 +36,7 @@ const App = () => {
     };
 
     if (isIntroShown) {
-        return (
-            <Intro />
-        );
+        return <Intro />;
     }
 
     return (

@@ -7,11 +7,10 @@ const MINIMUM_TIME_IN_MS_FOR_INTRO = 2000;
 
 const styles = StyleSheet.create({
     background: {
-        display: 'flex',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white' // You can set a fixed background color here
+        backgroundColor: 'white'
     },
     image: {
         width: 150,
@@ -20,24 +19,21 @@ const styles = StyleSheet.create({
 });
 
 export const Intro = () => {
-    // skipcq: JS-0356
     const [isWaiting, setIsWaiting] = useState(true);
     const navigation = useNavigation();
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             setIsWaiting(false);
-            navigation.navigate('OnboardingScreen', {});
+            navigation.navigate('OnboardingScreen'); // Navigate correctly
         }, MINIMUM_TIME_IN_MS_FOR_INTRO);
 
-        return () => {
-            clearTimeout(timeoutId);
-        }
-    }, []);
+        return () => clearTimeout(timeoutId);
+    }, [navigation]);
 
     return (
         <SafeAreaView style={styles.background}>
-            <ImageBackground style={styles.image} source={require('../assets/images/an1.gif')}></ImageBackground>
+            <ImageBackground style={styles.image} source={require('../assets/images/an1.gif')} />
         </SafeAreaView>
     );
 };
